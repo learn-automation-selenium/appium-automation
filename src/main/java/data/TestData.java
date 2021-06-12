@@ -6,7 +6,7 @@ public class TestData {
 
 	@DataProvider(name = "registerUser")
 	public Object[][] getRegistrationData() {
-		Object[][] data = { { "Argentina", "Afsana", "Female" }, { "India", "Iqbal", "Male" } };
+		Object[][] data = { { "Argentina", "Afsana", "Female" } };
 		return data;
 	}
 	

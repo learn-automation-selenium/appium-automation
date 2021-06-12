@@ -14,20 +14,22 @@ public class Ecommerce_Add_To_Cart_Demo_Test extends HybridBase {
 	@Test(dataProvider = "addToCart", dataProviderClass = TestData.class)
 	public void add_to_cart(String country, String userName, String gender, String item) {
 		
-		// register user page
-		ProductsPage productPage = new RegisterUserPage(driver)
+		//Register user page
+		RegisterUserPage registerUserPage = new RegisterUserPage(driver)
 		.clickOnCountryDropDown()
 		.selectCountry(country)
 		.enterName(userName)
-		.selectGender(gender)
-		.clickOnShopButton();
+		.selectGender(gender);
 		
-		// product page
-		CartPage cartPage = productPage
-		.scrollToItemAndAddToCart(item)
-		.clickOnCartButton();
+		// Product page
+		ProductsPage productsPage = registerUserPage
+				.clickOnShopButtonAndNavigateToProductPage()
+				.scrollToItemAndAddToCart(item);
 		
-		// cart page
+		//Cart page
+		CartPage cartPage = productsPage
+				.clickOnCartButton();
+		
 		Assert.assertEquals(item, cartPage.getItemText());
 		
 	}

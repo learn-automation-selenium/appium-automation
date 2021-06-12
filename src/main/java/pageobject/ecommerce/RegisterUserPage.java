@@ -97,6 +97,7 @@ public class RegisterUserPage {
 	 * @return
 	 */
 	public AndroidElement getShopButton() {
+		System.out.println("Clicking on Let's Shop Button");
 		return shopButton;
 	}
 
@@ -158,9 +159,14 @@ public class RegisterUserPage {
 	 * click on shop button
 	 * @return
 	 */
-	public ProductsPage clickOnShopButton() {
+	public ProductsPage clickOnShopButtonAndNavigateToProductPage() {
 		getShopButton().click();
 		return new ProductsPage(this.driver);
+	}
+	
+	public RegisterUserPage clickOnShopButtonToVerifyToastMessage() {
+		getShopButton().click();
+		return this;
 	}
 	
 	/**
@@ -188,7 +194,13 @@ public class RegisterUserPage {
 	 * @return
 	 */
 	public String getToastMessageText() {
-		return getToastMessage().getAttribute("name");
+		String toastMessage = "";
+		try {
+			toastMessage = getToastMessage().getAttribute("name");
+			return toastMessage;
+		} catch (Exception ex) {
+			return toastMessage;
+		}
 	}
 	
 	/**
