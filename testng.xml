@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E_Commerce">
+	<listeners>
+		<listener class-name="listeners.CustomListener" />
+		<listener class-name="reporter.ExtentReporterNG" />
+	</listeners>
+	<test thread-count="5" name="NativeApp">
+		<classes>
+			<!-- <class name="ecommerce.RegisterUser_Ecommerce_Demo_Test" />
+			<class name="ecommerce.RegisterUser_Ecommerce_Toast_Demo_Test" />-->
+			<class name="ecommerce.Ecommerce_Add_To_Cart_Demo_Test" />
+		</classes>
+	</test> <!-- NativeApp -->
+</suite> <!-- E_Commerce -->
