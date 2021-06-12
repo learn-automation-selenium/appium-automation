@@ -60,23 +60,24 @@ public class HybridBase {
 			File appDir = new File("src\\main\\resources\\apk");
 			File app = new File(appDir, property.getPropertyValue(appName));
 
-			String device = property.getPropertyValue("DEVICE_NAME");
-
-			// check if device is emulator, the only start emulator
-			/*
-			 * if(device.contains("emulator")) { 
-			 * 		startEmulator(); 
-			 * }
-			 */
+			String deviceType = property.getPropertyValue("DEVICE_TYPE");
+			String device = "";
 
 			// set the desired capabilities
 			DesiredCapabilities capabilities = new DesiredCapabilities();
+			
+			// check if device is emulator, the only start emulator
+			if (deviceType.contains("emulator")) {
+				//startEmulator();
+				device = property.getPropertyValue("DEVICE_NAME_EMULATOR");
+			} else {
+				device = property.getPropertyValue("DEVICE_NAME_REAL");
+			}
 
 			// based on the condition script will execute on real device / emulator
 			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device);
 
-			// capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android
-			// Device");
+			// capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 			capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, property.getPropertyValue("COMMAND_TIME_OUT"));
 			capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
 			capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath().toString());

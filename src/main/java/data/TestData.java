@@ -12,7 +12,7 @@ public class TestData {
 	
 	@DataProvider(name = "addToCart")
 	public Object[][] getAddToCartData() {
-		Object[][] data = { { "Argentina", "Afsana", "Female", "Air Jordan 1 Mid SE" } };
+		Object[][] data = { { "Argentina", "Afsana", "Female", "Air Jordan 4 Retro" } };
 		return data;
 	}
 }

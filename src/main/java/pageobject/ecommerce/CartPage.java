@@ -11,7 +11,7 @@ public class CartPage {
 
 	AndroidDriver<AndroidElement> driver;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productName']")
+	@AndroidFindBy(id = "com.androidsample.generalstore:id/productName")
 	private AndroidElement itemInCart;
 	
 	/******************************** Getters ************************************/
@@ -30,7 +30,7 @@ public class CartPage {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
